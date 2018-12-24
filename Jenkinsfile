@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build'){
             steps {
-                sh 'make'
+                sh 'mvn clean package'
             }
             post {
                 success {
