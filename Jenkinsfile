@@ -1,10 +1,5 @@
 pipeline {
     agent any
-    
-    tools{
-maven 'localmaven'
-jdk 'localjdk'
-}
     stages{
         stage('Init'){
             steps {
