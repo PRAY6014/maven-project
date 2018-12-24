@@ -1,11 +1,9 @@
 pipeline {
     agent any
+    
     tools{
-
 maven 'localmaven'
-
 jdk 'localjdk'
-
 }
     stages{
         stage('Init'){
@@ -15,8 +13,7 @@ jdk 'localjdk'
         }
         stage('Build'){
             steps {
-                echo '$PATH'
-                sh 'mvn package'
+                sh 'mvn clean package'
             }
             post {
                 success {
@@ -25,9 +22,9 @@ jdk 'localjdk'
                 }
             }
         }
-        stage('Deploy'){
+        stage ('Deploy to Staging'){
             steps {
-                echo 'Deploy...'
+                build job: 'deploy-to-staging'
             }
         }
     }
